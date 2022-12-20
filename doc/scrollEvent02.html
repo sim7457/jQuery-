@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/font.css" />
+    <script src="../js/jquery-1.12.4.min.js"></script>
+</head>
+<style>
+    section {
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+    }
+
+    section:nth-child(even) {
+        background: #f9f9f9;
+    }
+
+    .content {
+        position: relative;
+    }
+
+    .content h2 {
+        opacity: 0;
+        transform: translate(0, 200px);
+    }
+
+    .content.on h2 {
+        opacity: 1;
+        transition: 1s 1s;
+        transform: translate(0, 0);
+    }
+
+    .content .otb {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+        width: 200px;
+        height: 80px;
+        background: tomato;
+
+    }
+
+    .content.on .otb {
+        animation: otb 2s;
+    }
+
+    @keyframes otb {
+        to {
+            right: 50%;
+        }
+    }
+</style>
+
+<body>
+    <section class="main">
+        <h2>My main</h2>
+    </section>
+    <section class="content">
+        <h2>My h2</h2>
+        <div class="otb"></div>
+    </section>
+    <section class="content">
+        <h2>My h2</h2>
+        <div class="otb"></div>
+    </section>
+
+
+
+
+
+
+
+
+    <script>
+        $(function () {
+
+            var conP = $('.content').offset().top;
+
+
+            $(window).on('scroll', function () {
+                var sct = $(window).scrollTop();
+                console.log(conP, sct);
+                if (sct > conP - 300) {
+                    $('.content').addClass('on')
+                } else {
+                    $('.content').removeClass('on')
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>

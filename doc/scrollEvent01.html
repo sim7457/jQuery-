@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/font.css" />
+    <script src="../js/jquery-1.12.4.min.js"></script>
+</head>
+<style>
+    body {
+        height: 300vh;
+    }
+
+    #toTop {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        padding: 20px;
+        display: none;
+    }
+
+    #toTop i {
+        background: tomato;
+        color: #fff;
+        font-size: 20px;
+        padding: 20px;
+    }
+</style>
+
+<body>
+    <div id="toTop">
+        <i class="xi-arrow-top"></i>
+    </div>
+    <script>
+        $(function () {
+            $(window).on("scroll", function () {
+                var scr = $(window).scrollTop();
+                if (scr > 300) {
+                    $("#toTop").fadeIn();
+                } else {
+                    $("#toTop").fadeOut();
+                }
+                // scr > 300 ? $("#toTop").fadeIn() : $("#totTop").fadeOut();
+            });
+
+            $("#toTop").on("click", function () {
+                $("html, body").animate({ scrollTop: 0 }, 2000);
+            });
+        });
+    </script>
+</body>
+
+</html>
